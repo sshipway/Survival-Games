@@ -9,6 +9,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.mcsg.survivalgames.GameManager;
+import org.mcsg.survivalgames.SurvivalGames;
 
 
 
@@ -23,6 +24,7 @@ public class SignClickEvent implements Listener{
 
         Block clickedBlock = e.getClickedBlock(); 
         if(!(clickedBlock.getType()==Material.SIGN || clickedBlock.getType()==Material.SIGN_POST || clickedBlock.getType()==Material.WALL_SIGN)) return;
+        SurvivalGames.debug("Sign clicked");
         Sign thisSign = (Sign) clickedBlock.getState();
         //System.out.println("Clicked sign");
         String[] lines = thisSign.getLines();
@@ -39,7 +41,11 @@ public class SignClickEvent implements Listener{
                     GameManager.getInstance().addPlayer(e.getPlayer(), gameno);
                 }
 
-            }catch(Exception ek){}
+            }catch(Exception ek){
+            	SurvivalGames.debug("Exception: "+ek.getMessage());
+            }
+        } else {
+        	SurvivalGames.debug("Not a survivalgames sign: "+lines[0]);
         }
 
     }

@@ -25,7 +25,7 @@ public class LobbyWall {
 
     public boolean loadSign(World w, int x1, int x2, int z1, int z2, int y1) {
         boolean usingx = (x1 == x2) ? false : true;
-        SurvivalGames.debug(w + " " + x1 + " " + x2 + " " + z1 + " " + z2 + " " + y1 + " " + usingx);
+        SurvivalGames.debug("Loading sign in world " + w + " " + x1 + " " + x2 + " " + z1 + " " + z2 + " " + y1 + " " + usingx);
         int dir = new Location(w, x1, y1, z1).getBlock().getData();
         if (usingx) {
             for (int a = Math.max(x1, x2); a >= Math.min(x1, x2); a--) {
@@ -80,32 +80,41 @@ public class LobbyWall {
             return;
         }
         clear();
+        
+        SurvivalGames.debug("Updating signs for game "+gameid);
+        
         Game game = GameManager.getInstance().getGame(gameid);
         Sign s0 = signs.get(0);
         Sign s1 = signs.get(1);
 
+        SurvivalGames.debug("Sign 0 at " + s0.getX() + "," + s0.getZ() + " has initial line " + s0.getLine(0));
+        
         //sign 0
         s0.setLine(0, "[SurvivalGames]");
         s0.setLine(1, "Click to join");
         s0.setLine(2, "Arena " + gameid);
+        s0.setLine(3, "");
+        s0.update();
 
         //sign 1
-        s1.setLine(0, game.getName());
-        s1.setLine(1, game.getMode() + "");
-        s1.setLine(2, game.getActivePlayers() + "/" + ChatColor.GRAY + game.getInactivePlayers() + ChatColor.BLACK + "/" + SettingsManager.getInstance().getSpawnCount(game.getID()));
+        s1.setLine(0,  game.getName() );
+        s1.setLine(1,  game.getMode().toString() );
+        s1.setLine(2,  game.getActivePlayers() + "/" + game.getInactivePlayers() + "/" + SettingsManager.getInstance().getSpawnCount(game.getID()) );
+        s0.setLine(3, "");
 
         //live update line s1
         if (game.getMode() == Game.GameMode.STARTING) {
-            s1.setLine(3, game.getCountdownTime() + "");
+            s1.setLine(3, game.getCountdownTime()+"");
         } else if (game.getMode() == Game.GameMode.RESETING || game.getMode() == Game.GameMode.FINISHING) {
             s1.setLine(3, game.getRBStatus());
             if (game.getRBPercent() > 100) {
                 s1.setLine(1, "Saving Queue");
-                s1.setLine(3, (int) game.getRBPercent() + " left");
+                s1.setLine(3,  (int) game.getRBPercent() + " left");
             } else s1.setLine(3, (int) game.getRBPercent() + "%");
         } else {
             s1.setLine(3, "");
         }
+        s1.update();
 
         //live player data
         ArrayList < String > display = new ArrayList < String > ();

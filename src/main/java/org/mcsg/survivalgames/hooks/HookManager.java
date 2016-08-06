@@ -86,7 +86,7 @@ public class HookManager {
 				}
 			}
 			if(!flag){
-				System.out.println("[Survival Games][HookManager]Condition does not contian a compare operator: "+split);
+				System.out.println("[Survival Games][HookManager]Condition does not contain a compare operator: "+split);
 				return false;
 			}
 			try{

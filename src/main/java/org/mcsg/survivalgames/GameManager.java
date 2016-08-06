@@ -73,6 +73,7 @@ public class GameManager {
 		int no = c.getInt("sg-system.arenano", 0);
 		int loaded = 0;
 		int a = 1;
+		SurvivalGames.debug("Loading "+no+" games");
 		while (loaded < no) {
 			if (c.isSet("sg-system.arenas." + a + ".x1")) {
 				//c.set("sg-system.arenas."+a+".enabled",c.getBoolean("sg-system.arena."+a+".enabled", true));
@@ -83,7 +84,12 @@ public class GameManager {
 					loaded++;
 					games.add(new Game(a));
 					StatsManager.getInstance().addArena(a);
+				} else {
+					SurvivalGames.debug("Arena "+a+" is disabled");
 				}
+
+			} else {
+				SurvivalGames.debug("Arena "+a+" is misconfigured!");
 			}
 			a++;
 			

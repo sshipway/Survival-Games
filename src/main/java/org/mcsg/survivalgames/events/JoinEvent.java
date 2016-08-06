@@ -44,7 +44,7 @@ public class JoinEvent implements Listener {
             Bukkit.getServer().getScheduler().scheduleAsyncDelayedTask(plugin, new Runnable() {
 
                 public void run() {
-                    System.out.println("[SG]Checking for updates");
+                    System.out.println("[SG] Checking for updates");
                     new UpdateChecker().check(p, plugin);
                 }
              }, 60L);

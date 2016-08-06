@@ -45,9 +45,14 @@ public class StatsWallManager {
 
         FileConfiguration c = SettingsManager.getInstance().getSystemConfig();
         try{
-            if(!c.getBoolean("sg-system.stats.sign.set"))
+            if(!c.getBoolean("sg-system.stats.sign.set")){
+    			SurvivalGames.debug("No stats wall sign defined");
                 return;
-        }catch(Exception e){return;}
+            }
+        }catch(Exception e){
+			SurvivalGames.debug("Error on stats sign load: "+e.getMessage());
+        	return;
+        }
         boolean usingx = false;
         int hdiff = 0;
         int x1 = c.getInt("sg-system.stats.sign.x1");

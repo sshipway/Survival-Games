@@ -38,7 +38,7 @@ public class StatsManager {
     MessageManager msgmgr;
 
     private StatsManager(){
-    	msgmgr = MessageManager.getInstance();;
+    	msgmgr = MessageManager.getInstance();
     }
 
     public static StatsManager getInstance(){

@@ -66,10 +66,12 @@ public class LobbyManager {
 		else{
 			/*s.set("sg-system.lobby.signs." + a, null); 
 			SettingsManager.getInstance().saveSystemConfig();*/
+			SurvivalGames.debug("Arena "+a+" cannot load lobby sign");
 		}
 		}catch(Exception e){
 			s.set("sg-system.lobby.signs." + a, null);
 			s.set("sg-system.lobby.signno", s.getInt("sg-system.lobby.signno")-1);
+			SurvivalGames.debug("Arena "+a+" error on lobby sign load: "+e.getMessage());
 		}
 	}
 
