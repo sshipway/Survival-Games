@@ -1,4 +1,4 @@
-Survival Games [![Travis-CI](https://travis-ci.org/ThunderGemios10/Survival-Games.svg)](https://travis-ci.org/ThunderGemios10/Survival-Games)
+Survival Games [![Travis-CI](https://api.travis-ci.org/ThunderGemios10/Survival-Games.svg)](https://travis-ci.org/ThunderGemios10/Survival-Games)
 =================================
 Survival Games is a plugin that has the aim of creating a fully automated hunger games style experience. The plugin was created to be simple to use, and to be easily setup on any type of server, no matter the size or type! Survival Games provides a way for your server to have a full fledged, fully automated hunger games experience for any player. For more information on the aim of the plugin, watch popular youtuber AntVenom play Survival Games [HERE](http://www.youtube.com/watch?v=Lxqk1SRqW6I).
 
@@ -42,7 +42,6 @@ Note that this updated plugin also has Bandages, and a modified and extended Che
 
 Permissions
 -----------
-<<<<<<< HEAD
 The players should be in Survival mode, and need to have permissions to place, interact with and break blocks.  You can define which blocks may be placed and broken in the `config.yml` file.
 
 To join arena number 1, players need to have the following permissions:
@@ -65,7 +64,6 @@ Read Before Posting!
 If you have for example 6 arenas, and you want every player to be able to join all arenas, give each rank the following permissions:
 
  - sg.arena.join.<arena#> (Replace <arena#> with the arena number.)
->>>>>>> 5e6b786fe5675dca703cbf8871927e46fe3b6b8b
  - sg.arena.join
  - sg.arena.vote - Allows player to vote for start
  - sg.arena.spectate - Allows a user to spectate a game 
